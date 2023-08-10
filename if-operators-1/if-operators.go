@@ -3,23 +3,24 @@ package main
 import "fmt"
 
 func main() {
-	printMessage(sayMore("Mick", 42))
-}
-
-func printMessage(message string) {
+	var name string = "Mick"
+	var age int = 15
+	fmt.Println(name, age)
+	message, _ := enterTheClub(age)
 	fmt.Println(message)
+	//	fmt.Println(entered)
+	// fmt.Println(enterTheClub(age))
 
 }
 
 func sayMore(name string, age int) string {
-	// return fmt.Sprintf("Hello, %s. You are %d years old.", name, age)
 	return fmt.Sprintf("Hello, %s. You are %d years old.", name, age)
 }
 
 func enterTheClub(age int) (string, bool) {
 	if age >= 18 {
 		return "You are allowed to enter", true
-	} else {
-		return "You arent't allowed to enter, go home", false
 	}
+	return "You arent't allowed to enter, go home", false
+
 }
