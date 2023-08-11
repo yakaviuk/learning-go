@@ -3,10 +3,15 @@ package main
 import (
 	"errors"
 	"fmt"
+	"log"
 )
 
 func main() {
-	fmt.Println(prediction("Wensday"))
+	message, err := prediction("Wednesday")
+	fmt.Println(message)
+	if err != nil {
+		log.Println(err)
+	}
 }
 
 func prediction(dayOfWeek string) (string, error) {
