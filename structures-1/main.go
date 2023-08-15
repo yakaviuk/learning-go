@@ -4,17 +4,45 @@ import "fmt"
 
 type User struct {
 	name   string
-	age    int
+	age    Age
 	sex    string
 	height uint32
 	weight float32
+}
+
+type Age int
+
+func (a Age) isAdult() bool {
+	return a>=18
+}
+
+// u User - value receiver
+func (u User) printUserInfo() {
+	// will be changed only in this function, original value will not be changed
+	u.age = 42
+	fmt.Println("name:", u.name, "sex:", u.sex, "age:", u.age)
+}
+
+// u *User - pointer receiver
+func (u *User) changeAndPrintUserInfo() {
+	// original value will be changed as well
+	u.age = 42
+	fmt.Println("name:", u.name, "sex:", u.sex, "age:", u.age)
+}
+
+func (u User) getName() string {
+	return u.name
+}
+
+func (u *User) setName(name string) {
+	u.name = name
 }
 
 // constructor
 func NewUser(name string, age int, sex string, height uint32, weight float32) User {
 	return User{
 		name:   name,
-		age:    age,
+		age:    Age(age),
 		sex:    sex,
 		height: height,
 		weight: weight,
@@ -36,9 +64,21 @@ func main() {
 	fmt.Printf("%+v\n", user1)
 
 	fmt.Println(user1.name, user1.age)
-	printUserInfo(user3)
-}
+	// printUserInfo(user3)
+	user3.printUserInfo()
+	user4.printUserInfo()
 
-func printUserInfo(user User) {
-	fmt.Println("name:", user.name, "sex:", user.sex)
+	fmt.Println(user3.age)
+	fmt.Println(user4.age)
+
+	user1.changeAndPrintUserInfo()
+	user2.changeAndPrintUserInfo()
+	fmt.Println(user1.age)
+	fmt.Println(user2.age)
+
+	fmt.Println(user5.getName())
+	user5.setName("Roland")
+	fmt.Println(user5.getName())
+
+	fmt.Println(user2.getName(), "is adult:", user2.age.isAdult())
 }
