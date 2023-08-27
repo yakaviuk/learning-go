@@ -23,12 +23,12 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 	var status string
 	if grade >= 60 {
 		status = "passed"
 	} else {
 		status = "failed"
 	}
-	fmt.Println(status)
+	fmt.Println("A grade of", grade, "is", status)
 }
