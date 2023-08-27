@@ -8,9 +8,12 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func main() {
+	seconds := time.Now().Unix()
+	rand.Seed(seconds) // deprecated
 	min, max := 1, 101
 	randNum := rand.Intn(max-min) + min
 	fmt.Println("Guess the number!")
@@ -24,15 +27,16 @@ func main() {
 		}
 
 		input = strings.TrimSpace(input)
-		guess, err := strconv.ParseInt(input, 10, 64)
-		guessInt := int(guess)
+		// guess, err := strconv.ParseInt(input, 10, 0)
+		// guessInt := int(guess)
+		guess, err := strconv.Atoi(input)
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		if guessInt < randNum {
+		if guess < randNum {
 			fmt.Println("Oops, your guess was LOW")
-		} else if guessInt > randNum {
+		} else if guess > randNum {
 			fmt.Println("Oops, your guess was HIGH")
 		} else {
 			fmt.Println("Congrats! You win")
