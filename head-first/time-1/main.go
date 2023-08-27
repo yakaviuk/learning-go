@@ -14,4 +14,7 @@ func main() {
 	var timeString string = now.String()
 	fmt.Println(timeString)
 
+	fmt.Println(time.Now().Unix())
+	fmt.Println(time.Now().UnixNano())
+
 }
