@@ -48,6 +48,6 @@ func main() {
 		if i == 1 {
 			fmt.Println("Sorry. You didn't guess my number. It was:", randNum)
 		}
-		
+
 	}
 }
