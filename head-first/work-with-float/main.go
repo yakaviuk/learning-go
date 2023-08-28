@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	foo := 1.0
+	foo := 5.3
 	bar := 3.0
 	fmt.Printf("About one-third: %0.2f\n", foo/bar)
 	
